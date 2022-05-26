@@ -1,0 +1,16 @@
+name: pymailer
+namespace: ""
+runtime: python
+image: docker.io/donschenck/pymailer:latest
+imageDigest: sha256:597f5035c94617f9a2e5015d9fab825a883f99c244e43bc90ebc52dbf0d76ade
+builder: quay.io/boson/faas-python-builder:v0.8.3
+builderMap:
+  default: quay.io/boson/faas-python-builder:v0.8.3
+volumes: []
+envs:
+- name: SENDER_EMAIL_ADDRESS
+  value: '{{ secret:pymailer-auth-secrets:username }}'
+- name: SENDER_EMAIL_PASSWORD
+  value: '{{ secret:pymailer-auth-secrets:password }}'
+annotations: {}
+options: {}
